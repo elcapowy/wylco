@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antigravity Logistics - Audit Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 bg-slate-900 dark:bg-black text-white flex flex-col justify-between p-4">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary size-10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white">rocket_launch</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-tight">Antigravity</h1>
+<p class="text-slate-400 text-xs font-normal">Logistics System</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<p class="text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+<p class="text-sm font-medium">Inventory</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">local_shipping</span>
+<p class="text-sm font-medium">Shipments</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary text-white rounded-lg shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+<p class="text-sm font-medium">Audit Logs</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4 border-t border-white/10 pt-4">
+<div class="flex items-center gap-3 px-2">
+<div class="size-8 rounded-full overflow-hidden border-2 border-primary/50">
+<img class="w-full h-full object-cover" data-alt="User profile avatar of the administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvz8h3-CLEr75EH1CyXm2_iXAHXzY2t1izduVVRsMFsYf18zr4PWsLlDUQQ_fWRhM3NbywRssLRunDZVu0kJ6Msdz7hW69pBIlv9hm6v3GsivYz1PJ4MktNSZei_1cJI9QVPgC7IdRksHLF6Y4yIdVJrNroVNEDU377VVGRMXJbRIghXd47GaDjLz6xJ_-qUqV6AnQXTasO2UxShGCiv-LtzTEwdwQ3AV74zXx6Bo57v28Zd8KaknWFOnPhk9EuuXusRbDODIVWOk"/>
+</div>
+<div class="flex flex-col">
+<p class="text-xs font-bold">Admin User</p>
+<p class="text-[10px] text-slate-400">System Overseer</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-2 px-4 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold transition-all">
+<span class="material-symbols-outlined text-sm">logout</span>
+                Logout
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shrink-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+<h2 class="text-lg font-bold tracking-tight">Audit Log Explorer</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 w-64" placeholder="Search logs..." type="text"/>
+</div>
+<button class="flex items-center justify-center size-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export Report
+                </button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 overflow-y-auto p-8 bg-background-light dark:bg-background-dark">
+<!-- Summary Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Overrides (30d)</p>
+<span class="material-symbols-outlined text-primary/60">rule</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">1,284</h3>
+<p class="text-green-500 text-sm font-bold mb-1 flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+                            12%
+                        </p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Pending Reviews</p>
+<span class="material-symbols-outlined text-primary/60">pending_actions</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">42</h3>
+<p class="text-orange-500 text-sm font-bold mb-1 flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_downward</span>
+                            5%
+                        </p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">System Flag Rate</p>
+<span class="material-symbols-outlined text-primary/60">warning</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">3.2%</h3>
+<p class="text-orange-500 text-sm font-bold mb-1 flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_downward</span>
+                            0.8%
+                        </p>
+</div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+<!-- Filters Header -->
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-semibold cursor-pointer border border-transparent hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-sm text-slate-500">calendar_month</span>
+<span>Date: Last 7 Days</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-semibold cursor-pointer border border-transparent hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-sm text-slate-500">person</span>
+<span>Actor: All Users</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-semibold cursor-pointer border border-transparent hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-sm text-slate-500">category</span>
+<span>Event: Manual Port Override</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">filter_list_off</span>
+                        Clear Filters
+                    </button>
+</div>
+<!-- Audit Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Timestamp (ET)</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Actor</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Container ID</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Event Type</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Value Change</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Reason / Notes</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium">Oct 24, 2023</div>
+<div class="text-[10px] text-slate-400">14:32:10</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="text-sm">John Doe</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded font-mono text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">#C-88219</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-400 rounded-full text-[10px] font-bold">Manual Port Override</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2 text-xs">
+<span class="text-slate-400">Port A</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+<span class="font-bold text-primary">Port D</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 max-w-xs">Override requested by local customs due to inspection queue depth at Port A.</p>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium">Oct 24, 2023</div>
+<div class="text-[10px] text-slate-400">14:15:05</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+<span class="text-sm italic">System Engine</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded font-mono text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">#C-44502</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 rounded-full text-[10px] font-bold">LOGISTICS_DELAY_CRITICAL</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2 text-xs">
+<span class="text-slate-400">Normal</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+<span class="font-bold text-red-600">Delayed (48h+)</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 max-w-xs">Automated trigger: Weather system anomaly detected in Pacific sector-4.</p>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium">Oct 24, 2023</div>
+<div class="text-[10px] text-slate-400">13:58:44</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold">SM</div>
+<span class="text-sm">Sarah Miller</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded font-mono text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">#C-90021</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-400 rounded-full text-[10px] font-bold">Manual Port Override</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2 text-xs">
+<span class="text-slate-400">Port C</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+<span class="font-bold text-primary">Port B</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 max-w-xs">Justification: High-priority hazardous material bypass. Validated by safety chief.</p>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium">Oct 24, 2023</div>
+<div class="text-[10px] text-slate-400">13:10:22</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+<span class="text-sm italic">System Engine</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded font-mono text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">#C-11883</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 rounded-full text-[10px] font-bold">RE_ROUTING_SUCCESS</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2 text-xs text-green-600 font-bold">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                        Route Optimized
+                                    </div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 max-w-xs">Optimization complete. Estimated arrival improved by 4 hours.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<p class="text-xs text-slate-500 dark:text-slate-400">Showing 1 to 4 of 1,284 logs</p>
+<div class="flex items-center gap-2">
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700">2</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700">3</button>
+<span class="text-slate-400 text-xs">...</span>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700">321</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

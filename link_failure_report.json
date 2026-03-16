@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-03-13T10:25:37.760Z",
+  "errorCode": "ECONNREFUSED",
+  "message": "",
+  "networkStack": {
+    "interface": "localhost",
+    "port": 3001,
+    "status": "DISCONNECTED",
+    "stackTrace": "AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)"
+  },
+  "systemResources": {
+    "memory": {
+      "rss": 37191680,
+      "heapTotal": 5783552,
+      "heapUsed": 5018216,
+      "external": 1583074,
+      "arrayBuffers": 10475
+    },
+    "uptime": 179.321608833
+  }
+}

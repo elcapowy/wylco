@@ -1,0 +1,510 @@
+<html class="light" lang="en"><head></head><body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">```html
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antigravity Logistics | Refrigeration Sales Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-background-dark/50 bg-white dark:bg-background-dark px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">ac_unit</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Antigravity Logistics</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-xl" data-icon="search">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800 placeholder:text-slate-400 px-4 rounded-l-none pl-2 text-base font-normal" placeholder="Search Inventory..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Inventory</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Orders</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Quotes</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar of a professional manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBh40SWuxyrgG-cGYb-xA06pCnh1v2v2bj5vIjaRW5nUUgK5WucFEbKAOpNvYXsNZua5IsYRGavoNm8CBAWbBmeYbdUXAcjVyFIy2ohZmSKqgL0ie0G_AOuZ0RLGikdhVtrVz5SXTO6MIJOqWAl88jZIkfA8LuVA5KJvfWDqVldaHk13pHQkV4aGb5OGP43UomjCjVR6WlCxh5NGV2JlbgLxhXIO8q3NccD9UXt2wDwc665hNb7B88206X4DeYEHOOlT1pE78rklBI")'></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="hidden md:flex w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-4 gap-6">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-base font-bold">Miami Distribution Hub</h1>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider">Southeast Region</p>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium">Global Analytics</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+<p class="text-sm font-bold">Product Sales</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined">payments</span>
+<p class="text-sm font-medium">Landed Cost Tool</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<p class="text-sm font-medium">Stock Levels</p>
+</div>
+</div>
+<div class="mt-auto p-4 bg-primary/5 rounded-xl border border-primary/20">
+<p class="text-slate-900 dark:text-white text-xs font-bold mb-2">QUICK QUOTE</p>
+<div class="flex flex-col gap-3">
+<input class="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-xs rounded-lg p-2 focus:ring-primary focus:border-primary" placeholder="SKU or Name" type="text"/>
+<button class="w-full bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 rounded-lg transition-all shadow-sm">
+                        Generate Quote
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8">
+<!-- Breadcrumbs -->
+<div class="mb-6 flex items-center gap-2 text-xs font-medium text-slate-500">
+<span>Inventory</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Chemical Solutions</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary">K11 Refrigeration Sealing Line</span>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Product Overview -->
+<div class="flex-1 space-y-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="text-slate-900 dark:text-white text-3xl font-black tracking-tight">K11 Series Matrix Analysis</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Multi-SKU Shipment | <span class="text-green-600 dark:text-green-400 font-bold">Import Status: Active</span></p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-xl font-bold text-sm">
+<span class="material-symbols-outlined text-sm">edit</span> Bulk Edit
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl font-bold text-sm shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">share</span> Export Sheet
+                            </button>
+</div>
+</div>
+<!-- Main Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-slate-500 text-sm font-medium">Avg. Unit Net Cost</p>
+<p class="text-slate-900 dark:text-white text-3xl font-black">$5.68</p>
+<p class="text-green-600 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_flat</span> Market Stable
+                            </p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-primary/5 border border-primary/20 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 text-primary opacity-20">
+<span class="material-symbols-outlined text-4xl">local_shipping</span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Aggregated Profit Est.</p>
+<p class="text-primary text-3xl font-black">$5,044.80</p>
+<p class="text-red-500 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +2.1% vs Benchmark
+                            </p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-slate-500 text-sm font-medium">Avg. Gross Margin</p>
+<p class="text-slate-900 dark:text-white text-3xl font-black">44.6%</p>
+<p class="text-green-600 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> Above Target
+                            </p>
+</div>
+</div>
+<!-- NEW: Sales Pricing Matrix (Volume-Based) -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">sell</span> Sales Pricing Matrix (Volume-Based)
+                        </h3>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pricing Source: {{DATA:IMAGE:IMAGE_11}}</span>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-[12px]">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
+<th class="p-4 text-left font-bold text-slate-700 dark:text-slate-300">Part Number</th>
+<th class="p-4 text-left font-bold text-slate-700 dark:text-slate-300">Name</th>
+<th class="p-4 text-left font-bold text-slate-700 dark:text-slate-300">Pack Description</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Net Cost (Int.)</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Unit Cost (Int.)</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Base Sale Price</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Sale Range (NET)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">TFK11 Jeringa - 10ml</td>
+<td class="p-4 text-slate-600 dark:text-slate-400">Tapa Fugas</td>
+<td class="p-4 text-slate-500">Pack of 192</td>
+<td class="p-4 text-right font-medium text-slate-500">$1,209.60</td>
+<td class="p-4 text-right font-medium text-slate-500">$6.30</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-slate-900 dark:text-white" type="text" value="15.75"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-32 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-primary" type="text" value="15.75 - 16.85"/>
+</td>
+</tr>
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">TFK11 Jeringa + CO K11</td>
+<td class="p-4 text-slate-600 dark:text-slate-400">Tapa Fugas + Conector</td>
+<td class="p-4 text-slate-500">Pack of 192</td>
+<td class="p-4 text-right font-medium text-slate-500">$1,497.60</td>
+<td class="p-4 text-right font-medium text-slate-500">$7.80</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-slate-900 dark:text-white" type="text" value="19.40"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-32 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-primary" type="text" value="19.40 - 20.80"/>
+</td>
+</tr>
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">K11 2:1 Syringe 11ml</td>
+<td class="p-4 text-slate-600 dark:text-slate-400">Tapa Fugas 2:1</td>
+<td class="p-4 text-slate-500">Pack of 192</td>
+<td class="p-4 text-right font-medium text-slate-500">$1,497.60</td>
+<td class="p-4 text-right font-medium text-slate-500">$7.80</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-slate-900 dark:text-white" type="text" value="19.60"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-32 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-primary" type="text" value="19.60 - 21.00"/>
+</td>
+</tr>
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">20002</td>
+<td class="p-4 text-slate-600 dark:text-slate-400">Coupler 1/4"</td>
+<td class="p-4 text-slate-500">Pack of 400</td>
+<td class="p-4 text-right font-medium text-slate-500">$600.00</td>
+<td class="p-4 text-right font-medium text-slate-500">$1.50</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-slate-900 dark:text-white" type="text" value="1.50"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-32 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right p-1 focus:ring-primary font-bold text-slate-400" type="text" value="Fixed"/>
+</td>
+</tr>
+<tr class="bg-primary/5">
+<td class="p-4 font-bold text-primary italic">SPK11-B35</td>
+<td class="p-4 text-primary/80">Sella Plus K11</td>
+<td class="p-4 text-primary/60">Pack of 48</td>
+<td class="p-4 text-right font-medium text-primary/70">$240.00</td>
+<td class="p-4 text-right font-medium text-primary/70">$5.00</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-white dark:bg-slate-800 border-primary/20 rounded text-right p-1 focus:ring-primary font-black text-primary" type="text" value="8.75"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-32 bg-white dark:bg-slate-800 border-primary/20 rounded text-right p-1 focus:ring-primary font-black text-primary" type="text" value="8.75 - 9.35"/>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Financial Analysis: Profit & Markup Breakdown -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">finance</span> SKU Profit &amp; Markup Analysis
+                        </h3>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Internal Benchmark Reference</span>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-[13px]">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
+<th class="p-4 text-left font-bold text-slate-700 dark:text-slate-300">Part Number / SKU</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Net Cost</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Unit Cost (Landed)</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Markup (%)</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Pre-Tax Margin</th>
+<th class="p-4 text-right font-bold text-slate-700 dark:text-slate-300">Post-Tax (7%)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">TFK11 Jeringa - 10ml</td>
+<td class="p-4 text-right font-medium text-slate-500">$1,209.60</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold p-1 focus:ring-primary focus:border-primary" type="text" value="$6.30"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-16 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold text-green-600 p-1 focus:ring-primary focus:border-primary" type="text" value="60%"/>
+</td>
+<td class="p-4 text-right font-bold text-primary">37.5%</td>
+<td class="p-4 text-right font-bold text-primary">34.9%</td>
+</tr>
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">TFK11 Jeringa + CO K11</td>
+<td class="p-4 text-right font-medium text-slate-500">$1,497.60</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold p-1 focus:ring-primary focus:border-primary" type="text" value="$7.80"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-16 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold text-green-600 p-1 focus:ring-primary focus:border-primary" type="text" value="60%"/>
+</td>
+<td class="p-4 text-right font-bold text-primary">37.5%</td>
+<td class="p-4 text-right font-bold text-primary">34.9%</td>
+</tr>
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">K11 2:1 Syringe 11ml</td>
+<td class="p-4 text-right font-medium text-slate-500">$1,497.60</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold p-1 focus:ring-primary focus:border-primary" type="text" value="$7.80"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-16 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold text-green-600 p-1 focus:ring-primary focus:border-primary" type="text" value="60%"/>
+</td>
+<td class="p-4 text-right font-bold text-primary">37.5%</td>
+<td class="p-4 text-right font-bold text-primary">34.9%</td>
+</tr>
+<tr>
+<td class="p-4 font-bold text-slate-900 dark:text-white">20002 (Coupler 1/4")</td>
+<td class="p-4 text-right font-medium text-slate-500">$600.00</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold p-1 focus:ring-primary focus:border-primary" type="text" value="$1.50"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-16 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 rounded text-right text-[13px] font-bold text-slate-400 p-1 focus:ring-primary focus:border-primary" type="text" value="0%"/>
+</td>
+<td class="p-4 text-right font-bold text-slate-400">0.0%</td>
+<td class="p-4 text-right font-bold text-slate-400">0.0%</td>
+</tr>
+<tr class="bg-primary/5">
+<td class="p-4 font-bold text-primary italic">SPK11-B35 (Sella Plus K11)</td>
+<td class="p-4 text-right font-medium text-primary/70">$240.00</td>
+<td class="p-4 text-right">
+<input class="w-20 bg-white dark:bg-slate-800 border-primary/20 rounded text-right text-[13px] font-black text-primary p-1 focus:ring-primary focus:border-primary" type="text" value="$5.00"/>
+</td>
+<td class="p-4 text-right">
+<input class="w-16 bg-white dark:bg-slate-800 border-primary/20 rounded text-right text-[13px] font-black text-primary p-1 focus:ring-primary focus:border-primary" type="text" value="43%"/>
+</td>
+<td class="p-4 text-right font-black text-primary">30.1%</td>
+<td class="p-4 text-right font-black text-primary">28.0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900/50 p-3 flex items-center gap-2 border-t border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-slate-400 text-sm">info</span>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Margins are auto-calculated based on volume-based sales strategy and internal landed costs.</p>
+</div>
+</div>
+</div>
+<!-- Breakdown & Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span> Landed Cost Breakdown
+                            </h3>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+<table class="w-full text-sm">
+<tbody>
+<tr class="border-b border-slate-100 dark:border-slate-700">
+<td class="p-4 text-slate-500">Total NET Purchase Value</td>
+<td class="p-4 text-right font-bold">$5,044.80</td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-slate-700">
+<td class="p-4 text-slate-500">Freight &amp; Logistics (Miami Port)</td>
+<td class="p-4 text-right font-bold text-slate-900 dark:text-white">$312.50</td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+<td class="p-4 font-bold text-slate-900 dark:text-white">Tax Liability (7% Combined)</td>
+<td class="p-4 text-right font-bold text-slate-900 dark:text-white">$353.14</td>
+</tr>
+<tr class="bg-primary/10">
+<td class="p-4 font-black text-primary uppercase tracking-wide">Total Project Landed Cost</td>
+<td class="p-4 text-right font-black text-primary text-lg">$5,710.44</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">receipt_long</span> Tax Breakdown (Miami-Dade)
+                            </h3>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 space-y-4">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-slate-900 dark:text-white font-bold">Florida State Tax</p>
+<p class="text-xs text-slate-500">General Sales &amp; Use Tax</p>
+</div>
+<div class="text-right">
+<p class="text-primary font-bold">6.0%</p>
+<p class="text-xs font-medium text-slate-700 dark:text-slate-300">$302.69</p>
+</div>
+</div>
+<div class="h-px bg-slate-100 dark:bg-slate-700 w-full"></div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-slate-900 dark:text-white font-bold">Miami-Dade Surtax</p>
+<p class="text-xs text-slate-500">Charter County Surtax</p>
+</div>
+<div class="text-right">
+<p class="text-primary font-bold">1.0%</p>
+<p class="text-xs font-medium text-slate-700 dark:text-slate-300">$50.45</p>
+</div>
+</div>
+<div class="mt-4 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-400 text-lg">info</span>
+<p class="text-[10px] text-slate-500 leading-tight">Tax calculation based on current Miami-Dade County Department of Revenue guidelines for chemical refrigeration components (7% combined rate).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product & Quote Sidebar -->
+<div class="w-full lg:w-80 space-y-6">
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="aspect-square bg-slate-200 dark:bg-slate-900 bg-center bg-cover" data-alt="K11 Refrigeration Syringe Sealer Unit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9k0w-4v4JJPU2xFQdN8xk-AXcIgQFyVcamPhmiTTXVf64Lje15-atZXpCIqLJ4IHFjdCwG8FpUWosX9YefPSxskaUK7JiIgbdD3W2yxXwJBRjDo3oF1-IeluAGu6XuCDTZ2NvZrHlhAtbBlUK21hygqNB6sJhc4oZ-rhUZtKedYBefM1nBB3mORE2swfYJJZHfq4Yu97bNoTr0-dWQPcVAxyRlCxnOvBH6HtE6WUSqmcAzV7pmAw--tVTHMpxEwRFWnnjPeAYQuk")'></div>
+<div class="p-4">
+<p class="text-xs font-bold text-primary uppercase mb-1">Lot Status</p>
+<div class="flex items-center justify-between">
+<span class="text-slate-900 dark:text-white font-bold">In-Transit (MIA)</span>
+<span class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-black rounded uppercase">Verified</span>
+</div>
+</div>
+</div>
+<!-- Shipment Financial Summary -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border-l-4 border-primary p-5 shadow-sm space-y-4">
+<h4 class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Shipment Financial Summary</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-500">Total Import Value (Lot)</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">$5,044.80</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-500">Total Pre-tax Profit Est.</span>
+<span class="text-sm font-bold text-green-600">+$2,248.50</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-500">Total Post-tax Profit Est.</span>
+<span class="text-sm font-bold text-green-700">+$1,895.36</span>
+</div>
+<div class="h-px bg-slate-100 dark:bg-slate-700"></div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">Avg. Shipment Markup</span>
+<span class="text-base font-black text-primary">44.6%</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 text-white rounded-xl p-6 shadow-xl relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[120px]">assignment</span>
+</div>
+<h4 class="text-xl font-black mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span> Quote Preview
+                        </h4>
+<div class="space-y-3 mb-6 relative z-10">
+<div class="flex justify-between text-xs text-slate-400">
+<span>Mixed K11 Lot (Bulk)</span>
+<span>$5,044.80</span>
+</div>
+<div class="flex justify-between text-xs text-slate-400">
+<span>Logistics &amp; Processing</span>
+<span>$312.50</span>
+</div>
+<div class="flex justify-between text-xs text-slate-400">
+<span>FL Tax (7%)</span>
+<span>$353.14</span>
+</div>
+<div class="h-px bg-slate-800 w-full"></div>
+<div class="flex justify-between items-center">
+<span class="font-bold">Estimated Total</span>
+<span class="text-xl font-black text-primary">$5,710.44</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined">rocket_launch</span> Finalize Lot Quote
+                        </button>
+<p class="text-center text-[10px] text-slate-500 mt-4">Valid for 14 days • Antigravity Logistics MIA</p>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4">
+<h5 class="text-slate-900 dark:text-white font-bold text-sm mb-3">Related Inventory</h5>
+<div class="space-y-3">
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-900 bg-center bg-cover shrink-0" data-alt="Industrial commercial chiller unit thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxIz27YI5wllcSRv6sjmw4DWsQVSWSoHGNnkUTCBlQD1F7mWYxoD_ig13X0kcGqT1IBU0SXEKJsuvJolwvqd82bITo8hNcibaZQSteK1xKirLz704WFEf8KW4wyy1cg859HBAOhI4GDJwzJ_zXIM-8fdyEZ_6fA2E5OzAy0wVFAZKl_vA4X79wX9Zvos1byYm_C78mrPDuUP1ld0167AP7alPvyub8x0YR5uW-mt5_bSEG-LOTIqi6Jpy3AqpXvf8lGdtAkVifmQU")'></div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">Commercial Chiller V4</p>
+<p class="text-[10px] text-slate-500">Stock: 4 units</p>
+</div>
+<span class="text-xs font-bold text-slate-900 dark:text-white shrink-0">$18.2k</span>
+</div>
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-900 bg-center bg-cover shrink-0" data-alt="Industrial freezer thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBS8aAqQ8oiWrDUJR5-WCGz4Hwql0Cjn0O5Gtz6J0duNFCtX-UIQfrBawstUD5ySdJY-4AWIFZmGIAPDch8vJiVT_F1sHi-A1wctcZtPMHT7IMEyvE5IHWzP9pLn4KWfTzwAGNA6HRV5N59CXR78yPGNQs1DaSh39a8C-36fBL0mSE-f1k6YRKZe6UKgwTiWzqvLrO6-VBprRV-idiDJS9bGQGyq8RavCIGINz3H7l1diqXOOYZvYvyNvEKo6IiG9GnZ5Oad8aS6o8")'></div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">Industrial X200</p>
+<p class="text-[10px] text-slate-500">Stock: 12 units</p>
+</div>
+<span class="text-xs font-bold text-slate-900 dark:text-white shrink-0">$12.5k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Distribution Map Section -->
+<div class="mt-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg">Miami Hub Logistics Route</h3>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-green-500"></span>
+<p class="text-[10px] font-bold text-slate-500 uppercase">Live Port Status: Active</p>
+</div>
+</div>
+<div class="w-full h-48 bg-slate-100 dark:bg-slate-900 rounded-lg relative overflow-hidden flex items-center justify-center grayscale opacity-50 contrast-125" data-alt="Abstract stylized map of Miami Florida coastline" data-location="Miami" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7C7vGC0VolBbRrEEM6tKCyfiWjo8KaRdXAyj90lNBq5wy0Rnc9dd8a7gxXu0QSnMQfD7b3fXwXg3i5_9manMTplWGfHuLYDd1V3OBU7apCIi_sFjLC9LHWSIVGB7YOr8Uixi8hpifvoaEJJkpuw-hurmeGUVjAIWy5FH1zhoHbsrWRvnajYg4DcsqZEej1ePMwOwr-obaEupLNtVXuX7F44P2okS3YHaJkvF38JPGgZVHcy4offGzdnR2m-ANGqMwBdwAR_wozK4")'>
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="relative z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-4xl animate-bounce">location_on</span>
+<p class="text-slate-900 dark:text-white font-black text-xl drop-shadow-sm">MIAMI HUB</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+```</body></html>

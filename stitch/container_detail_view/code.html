@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antigravity Orchestrator - Container Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 lg:px-10 py-3 bg-white dark:bg-slate-900/50 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-xl bg-primary text-white">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Antigravity Orchestrator</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary py-1" href="#">Tracking</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Fleet Analytics</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-64 bg-slate-100 dark:bg-slate-800 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/50" placeholder="Search MSKU ID..."/>
+</div>
+<button class="flex items-center justify-center size-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User avatar" class="size-full object-cover" data-alt="Professional user profile portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSiSTCAbGy7F5lDtoW0xhHMjVQvOLq5WAnCy-x5slyuoQN3KnXYZ9gLuEm2RCuo6x29KP_KKrFlQsOyhQHhEJUlS9Gd5u5BIfBbnfRb7ZeeVuWg1duaRsqWaXSQXHEXSK9a4311zoYUPvT15jrCI_CCkeLVJvLNU8Xgdk5upGYoKLfjAdr2REdLEqFo-e_e3ybro9AOnXvav7BM2QYehHLcCmn4c-yP_fAZImLM5XZoP6zgcwBJd484KpchUXfKKTPqejnnrHR_Qs"/>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col gap-6 p-6 lg:px-10 max-w-[1400px] mx-auto w-full">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<h1 class="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">MSKU 9283741</h1>
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider border border-primary/20">In Transit</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<p class="text-sm font-medium">Currently at: Mid-Atlantic Ridge (Approaching PortMiami)</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span> Export JSON
+                        </button>
+<button class="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">sync</span> Refresh State
+                        </button>
+</div>
+</div>
+<div class="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex gap-4">
+<div class="size-10 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center text-red-600 dark:text-red-400 shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-red-800 dark:text-red-300 font-bold leading-tight">LOGISTICS_DELAY_CRITICAL</p>
+<p class="text-red-700/80 dark:text-red-400/80 text-sm">Vessel delayed due to severe weather system in the Atlantic. Port of discharge operations impacted.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-sm whitespace-nowrap">
+<span class="text-red-800 dark:text-red-300 font-semibold underline cursor-pointer">View Divergence Plan</span>
+<span class="px-2 py-1 rounded bg-red-600 text-white text-[10px] font-bold">URGENT</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">Shipment Path</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500">Origin</span>
+<span class="font-bold">Shanghai (CNSHA)</span>
+</div>
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+<div class="flex flex-col text-right">
+<span class="text-xs text-slate-500">Destination</span>
+<span class="font-bold">PortMiami (USMIA)</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between">
+<div>
+<span class="text-xs text-slate-500 block">Carrier</span>
+<span class="text-sm font-semibold">Maersk Line</span>
+</div>
+<div class="text-right">
+<span class="text-xs text-slate-500 block">ETA (Miami Time)</span>
+<span class="text-sm font-semibold text-primary">Oct 24, 2023, 14:30 EST</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">Data Integrity</h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="size-12 rounded-full border-4 border-emerald-500 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl">verified</span>
+</div>
+<div>
+<p class="text-sm font-bold">ISO 6346 Validated</p>
+<p class="text-xs text-slate-500">Checksum (4) matches MSKU prefix</p>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-3">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-slate-500">Payload Integrity</span>
+<span class="text-emerald-500 font-bold">100% Secure</span>
+</div>
+<div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-200 dark:bg-slate-800 rounded-xl h-[400px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Digital nautical map showing vessel tracking path in Atlantic ocean" data-location="Atlantic Ocean" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA3BDfs8FhZTq-AG8zabk5PwWCty7ozheZ7Vr2lVD24Z_sJcS0wtDCI3FwXhJTeVT2kXGgdEyYjYU-6nrj9tuO74a0_PthpM-tn8V_GMLAHjqXuJ1kD7_G4vDbfTwM_pQmXJ0HXtYltPgCDcTYVGCxGjVdCrfyFH2lNTiYCbPeEXRfsujKhLL2CcCASN4qOg4AeSg8v8akO7Yv7iGd40y_fFHHVG8VrcA6q6RzTqPJI1mVi6kObT6zFwr6h1LLbbu4sFzi7jMIXnwA');">
+</div>
+<div class="absolute inset-0 bg-slate-900/20"></div>
+<div class="absolute top-4 left-4 bg-white dark:bg-slate-900 p-3 rounded-lg shadow-xl">
+<p class="text-xs font-bold text-slate-400 uppercase mb-1">Live Position</p>
+<p class="text-sm font-mono font-bold">25° 46' 27.2" N 80° 11' 36.6" W</p>
+</div>
+<div class="absolute bottom-4 right-4 flex flex-col gap-2">
+<button class="size-10 bg-white dark:bg-slate-900 rounded-lg shadow-xl flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="size-10 bg-white dark:bg-slate-900 rounded-lg shadow-xl flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-75"></div>
+<div class="relative bg-primary text-white size-8 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+<span class="material-symbols-outlined text-sm">directions_boat</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/30">
+<h3 class="text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">history</span>
+                                    Tracking Timeline (Webhooks)
+                                </h3>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Times in US/Eastern</span>
+</div>
+<div class="p-6">
+<div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary before:via-slate-200 before:to-transparent">
+<div class="relative flex items-center justify-between gap-6 group">
+<div class="flex items-center gap-6">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30 z-10">
+<span class="material-symbols-outlined text-sm">notifications_active</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Webhook Received: LOGISTICS_DELAY</h4>
+<p class="text-xs text-slate-500">Status update from vessel API (Maersk)</p>
+</div>
+</div>
+<div class="text-right whitespace-nowrap">
+<p class="text-xs font-bold text-slate-900 dark:text-white">Oct 22, 09:12 AM</p>
+<p class="text-[10px] text-slate-400">13:12 UTC</p>
+</div>
+</div>
+<div class="relative flex items-center justify-between gap-6 group">
+<div class="flex items-center gap-6">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 z-10">
+<span class="material-symbols-outlined text-sm">anchor</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Port Departure</h4>
+<p class="text-xs text-slate-500">Vessel cleared Shanghai Port Authority</p>
+</div>
+</div>
+<div class="text-right whitespace-nowrap">
+<p class="text-xs font-bold text-slate-900 dark:text-white">Oct 18, 04:30 AM</p>
+<p class="text-[10px] text-slate-400">08:30 UTC</p>
+</div>
+</div>
+<div class="relative flex items-center justify-between gap-6 group">
+<div class="flex items-center gap-6">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 z-10">
+<span class="material-symbols-outlined text-sm">inventory</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Gate In</h4>
+<p class="text-xs text-slate-500">Container gated at CNSHA terminal</p>
+</div>
+</div>
+<div class="text-right whitespace-nowrap">
+<p class="text-xs font-bold text-slate-900 dark:text-white">Oct 17, 11:45 PM</p>
+<p class="text-[10px] text-slate-400">03:45 UTC</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<div class="px-5 py-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<h3 class="text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">payments</span>
+                                    Landed Cost Calculation
+                                </h3>
+</div>
+<div class="p-5 space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
+<span class="text-sm text-slate-500">FOB Price</span>
+<span class="text-sm font-semibold">$42,500.00</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
+<span class="text-sm text-slate-500">Customs/Taxes (Miami)</span>
+<span class="text-sm font-semibold text-red-500">+$3,420.50</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
+<span class="text-sm text-slate-500">Inland Freight</span>
+<span class="text-sm font-semibold">+$850.00</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
+<span class="text-sm text-slate-500">Insurance</span>
+<span class="text-sm font-semibold">+$210.00</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-base font-bold text-slate-900 dark:text-white">Estimated Total</span>
+<span class="text-xl font-black text-primary">$46,980.50</span>
+</div>
+<div class="mt-4 p-3 bg-primary/5 rounded-lg border border-primary/10">
+<p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Exchange Rate</p>
+<p class="text-xs text-slate-600 dark:text-slate-400">1.00 USD = 7.31 CNY (Shanghai Lock-in)</p>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 text-slate-300 rounded-xl overflow-hidden shadow-xl border border-slate-800">
+<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-500">Raw Webhook Payload</h3>
+<span class="size-2 rounded-full bg-emerald-500"></span>
+</div>
+<div class="p-5 font-mono text-[11px] leading-relaxed overflow-x-auto">
+<pre class="whitespace-pre">{
+  "event_id": "wh_9283741_01",
+  "container_id": "MSKU9283741",
+  "status": "IN_TRANSIT",
+  "location": {
+    "lat": 25.774,
+    "lng": -80.193,
+    "city": "Miami Approach"
+  },
+  "metadata": {
+    "vessel_name": "Antigravity-1",
+    "speed_knots": 18.2,
+    "heading": 285,
+    "validation": {
+      "iso_status": "VALID",
+      "checked_at": "2023-10-22T13:12:00Z"
+    }
+  }
+}</pre>
+</div>
+<button class="w-full py-3 bg-slate-800/50 hover:bg-slate-800 text-xs font-bold text-slate-400 border-t border-slate-800 transition-colors">
+                                COPY TO CLIPBOARD
+                            </button>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">Operations Notes</h3>
+<div class="flex flex-col gap-4">
+<div class="flex gap-3">
+<img alt="Staff avatar" class="size-8 rounded-full border border-slate-200" data-alt="Female logistics manager profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA_wRY5vV7zrGFi9kWyfWkDVw8_34iCpdETj0BXXM53WDUCVcVjn7q0P5d61JrUY6yVV3yZt3E952m6Lx9skGFouhW4S1zfrfg_Do0BdB-gQWNv5pPmYFy9Ke1wDahubF7gcV15jgkynkUce6QjcMramVNx1ilBKROoZr8arWHfMHzz1H22KjmFJMJD4iGa5GodROel5KUeOfDnge_TpZJnY2xxnkntq_NW7I_eD_bpSbHMdPIlFXex-EwlmVa00vNkERHNhgVrqU"/>
+<div class="flex-1 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl rounded-tl-none">
+<p class="text-xs text-slate-900 dark:text-white mb-1"><span class="font-bold">Sarah Chen</span> · 2h ago</p>
+<p class="text-xs text-slate-500">Contacted PortMiami dispatcher. Docking window might shift +4h due to swell.</p>
+</div>
+</div>
+<div class="relative">
+<textarea class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-primary focus:border-primary p-3" placeholder="Add an internal note..." rows="2"></textarea>
+<button class="absolute right-2 bottom-2 size-8 bg-primary text-white rounded-lg flex items-center justify-center hover:opacity-90">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto px-6 lg:px-10 py-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-medium">
+<p>© 2023 Antigravity Logistics Data Orchestrator. All systems operational.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Security Audit</a>
+<a class="hover:text-primary transition-colors" href="#">Support Portal</a>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

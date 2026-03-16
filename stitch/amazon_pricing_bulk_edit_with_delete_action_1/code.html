@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Edit Pricing Rules - Antigravity Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Main Container -->
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/20 bg-white dark:bg-background-dark px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Antigravity Logistics</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary" href="#">Pricing Rules</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>
+</div>
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-slate-100 dark:bg-primary/10 text-slate-700 dark:text-white hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-slate-100 dark:bg-primary/10 text-slate-700 dark:text-white hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content (Overlay/Modal Style) -->
+<main class="flex-1 flex flex-col items-center py-8 px-4 md:px-10 bg-slate-50 dark:bg-background-dark/50">
+<div class="w-full max-w-4xl bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-primary/10 overflow-hidden">
+<!-- Modal Header -->
+<div class="p-6 border-b border-slate-100 dark:border-primary/10 flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Bulk Edit Pricing Rules</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Modifying configurations for <span class="font-bold text-primary">12 selected SKUs/ASINs</span></p>
+</div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-6 space-y-8">
+<!-- Pricing Strategy Selection -->
+<section>
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Pricing Strategy</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<button class="flex flex-col items-start gap-2 p-4 rounded-xl border-2 border-primary bg-primary/5 text-left transition-all">
+<span class="material-symbols-outlined text-primary">dynamic_feed</span>
+<span class="font-bold text-slate-900 dark:text-white">Match Buy Box</span>
+<span class="text-xs text-slate-500">Stay competitive with the current winner.</span>
+</button>
+<button class="flex flex-col items-start gap-2 p-4 rounded-xl border-2 border-slate-100 dark:border-primary/5 hover:border-primary/50 text-left transition-all">
+<span class="material-symbols-outlined text-slate-400">trending_down</span>
+<span class="font-bold text-slate-900 dark:text-white">Aggressive Undercut</span>
+<span class="text-xs text-slate-500">Price $0.01 below the lowest offer.</span>
+</button>
+<button class="flex flex-col items-start gap-2 p-4 rounded-xl border-2 border-slate-100 dark:border-primary/5 hover:border-primary/50 text-left transition-all">
+<span class="material-symbols-outlined text-slate-400">percent</span>
+<span class="font-bold text-slate-900 dark:text-white">Percentage Markup</span>
+<span class="text-xs text-slate-500">Fixed margin above landed cost.</span>
+</button>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Price Limits -->
+<section class="space-y-4">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Guardrails &amp; Limits</h2>
+<div class="space-y-3">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Floor Price Adjustment</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
+<input class="w-full pl-8 pr-4 py-2 rounded-lg border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-primary/5 focus:ring-primary focus:border-primary" placeholder="Min Price" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Ceiling Price Adjustment</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
+<input class="w-full pl-8 pr-4 py-2 rounded-lg border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-primary/5 focus:ring-primary focus:border-primary" placeholder="Max Price" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Logic Toggles -->
+<section class="space-y-4">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Sync Logic</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-primary/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<div class="flex flex-col">
+<span class="text-sm font-bold">Miami-Dade Tax Engine</span>
+<span class="text-xs text-slate-500">Calculate local sales tax offsets</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-primary/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">sync</span>
+<div class="flex flex-col">
+<span class="text-sm font-bold">Bulk Pricing Sync</span>
+<span class="text-xs text-slate-500">Update all Amazon marketplaces</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Selected Items Preview -->
+<section class="border-t border-slate-100 dark:border-primary/10 pt-6">
+<div class="flex items-center justify-between mb-4"><h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Selected Items (12)</h2><div class="flex items-center gap-4 flex-1 justify-end"><div class="relative max-w-xs w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span><input class="w-full pl-9 pr-4 py-1.5 text-xs rounded-lg border-slate-200 dark:border-primary/20 bg-slate-50 dark:bg-primary/5 focus:ring-primary focus:border-primary text-slate-900 dark:text-white" placeholder="Search SKUs or ASINs..." type="text"/><button class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"><span class="material-symbols-outlined text-sm">close</span></button></div><button class="text-primary text-xs font-bold hover:underline whitespace-nowrap">Manage Selection</button></div></div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="text-slate-400 border-b border-slate-100 dark:border-primary/10">
+<tr>
+<th class="pb-2 font-medium">Product Name / ASIN</th>
+<th class="pb-2 font-medium">SKU</th>
+<th class="pb-2 font-medium">Current Price</th>
+<th class="pb-2 font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50 dark:divide-primary/5">
+<tr>
+<td class="py-3">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900 dark:text-white">Echo Dot (5th Gen)</span>
+<span class="text-xs text-slate-500">B09B8V1LZ3</span>
+</div>
+</td>
+<td class="py-3 text-slate-600 dark:text-slate-400">AMZ-ED5-BLK-01</td>
+<td class="py-3 font-semibold">$49.99</td>
+<td class="py-3 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="py-3">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900 dark:text-white">Kindle Paperwhite (16GB)</span>
+<span class="text-xs text-slate-500">B09TMN58KL</span>
+</div>
+</td>
+<td class="py-3 text-slate-600 dark:text-slate-400">AMZ-KP16-GRY-02</td>
+<td class="py-3 font-semibold">$139.99</td>
+<td class="py-3 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="py-3">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900 dark:text-white">Fire TV Stick 4K</span>
+<span class="text-xs text-slate-500">B08XVYZ1Y5</span>
+</div>
+</td>
+<td class="py-3 text-slate-600 dark:text-slate-400">AMZ-FTS4K-03</td>
+<td class="py-3 font-semibold">$34.99</td>
+<td class="py-3 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Modal Footer -->
+<div class="p-6 bg-slate-50 dark:bg-primary/5 border-t border-slate-100 dark:border-primary/10 flex justify-end gap-3">
+<button class="px-6 py-2.5 rounded-xl border border-slate-200 dark:border-primary/20 text-slate-600 dark:text-slate-300 font-bold hover:bg-white dark:hover:bg-primary/10 transition-colors">
+                        Cancel
+                    </button>
+<button class="px-6 py-2.5 rounded-xl border border-red-500 text-red-600 dark:text-red-400 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">delete</span>
+    Delete Rules
+</button><button class="px-6 py-2.5 rounded-xl border border-amber-500 text-amber-600 dark:text-amber-400 font-bold hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">pause</span>
+    Pause Sync
+</button><button class="px-6 py-2.5 rounded-xl border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">play_arrow</span>
+    Resume Sync
+</button><button class="px-8 py-2.5 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">bolt</span>
+                        Apply Changes
+                    </button>
+</div>
+</div>
+<p class="mt-8 text-slate-400 text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">info</span>
+                Changes typically propagate to Amazon Seller Central within 5-15 minutes.
+            </p>
+</main>
+</div>
+</div>
+</body></html>

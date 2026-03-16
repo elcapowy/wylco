@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antigravity - Manual Override Confirmation</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter for professional typography -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="typography">
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<style data-purpose="background-overlay">
+    /* Subtle blur effect for the background behind the modal */
+    .modal-backdrop {
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+<!-- BEGIN: MainHeader -->
+<header class="bg-white border-b border-gray-200 px-6 py-3 flex justify-between items-center sticky top-0 z-30">
+<div class="flex items-center space-x-2">
+<!-- Antigravity Logo Placeholder -->
+<div class="w-8 h-8 bg-[#f15a24] rounded-lg flex items-center justify-center">
+<svg class="w-5 h-5" fill="white" viewbox="0 0 24 24">
+<path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+</svg>
+</div>
+<span class="text-xl font-bold text-slate-800 tracking-tight">Antigravity</span>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-gray-400 hover:text-gray-600 rounded-full bg-gray-100">
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+</svg>
+</button>
+<div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 overflow-hidden">
+<svg class="h-6 w-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: PageContent -->
+<main class="flex-grow flex flex-col items-center justify-center p-4 md:p-8 relative">
+<!-- Background Content (Simulating Screen 5) -->
+<section class="max-w-2xl w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden opacity-40 pointer-events-none">
+<div class="p-8">
+<div class="flex items-center space-x-2 text-xs font-bold text-orange-600 uppercase tracking-wider mb-2">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" fill-rule="evenodd"></path></svg>
+<span>Resolution Required</span>
+</div>
+<h1 class="text-3xl font-bold text-gray-900 mb-1">Manual Override</h1>
+<p class="text-gray-500 text-sm mb-8">Resolving <span class="text-orange-600 font-semibold">DIVERSION_WARNING</span> for logistics asset.</p>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="space-y-1">
+<label class="block text-xs font-semibold text-gray-600">Container ID</label>
+<div class="bg-blue-50/50 border border-blue-100 p-3 rounded-lg text-sm font-medium text-slate-700">CONT-99283-X</div>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-semibold text-gray-600">Current Detected Port</label>
+<div class="bg-blue-50/50 border border-blue-100 p-3 rounded-lg text-sm font-medium text-slate-700">Port of Rotterdam (NLD)</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BEGIN: ConfirmationModal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" data-purpose="confirmation-modal-overlay">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden transform transition-all" data-purpose="confirmation-modal-card">
+<!-- Modal Body -->
+<div class="p-8">
+<div class="flex items-start mb-6">
+<div class="bg-orange-100 p-3 rounded-full mr-4 flex-shrink-0">
+<svg class="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-gray-900 mb-3" id="modal-title">Confirm Manual Override</h2>
+<p class="text-gray-600 leading-relaxed">
+                Are you sure you want to authorize the destination change for container <span class="font-bold text-slate-800">[CONT-99283-X]</span>? This action will be logged and will immediately update the live tracking manifest.
+              </p>
+</div>
+</div>
+<!-- Alert Note -->
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-8 flex space-x-3">
+<svg class="h-5 w-5 text-slate-400 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" fill-rule="evenodd"></path>
+</svg>
+<p class="text-sm text-slate-600 italic">
+              Audit ID will be generated upon confirmation for regulatory compliance.
+            </p>
+</div>
+<!-- Modal Actions -->
+<div class="flex flex-col sm:flex-row-reverse gap-3">
+<button class="w-full sm:w-auto bg-[#f15a24] hover:bg-[#d94e1c] text-white font-semibold py-3 px-8 rounded-lg shadow-md transition duration-200 text-center" data-purpose="confirm-button">
+              Confirm &amp; Apply
+            </button>
+<button class="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-8 rounded-lg transition duration-200 text-center" data-purpose="cancel-button">
+              Go Back
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: ConfirmationModal -->
+</main>
+<!-- END: PageContent -->
+<!-- BEGIN: MainFooter -->
+<footer class="py-6 border-t border-gray-100">
+<p class="text-center text-xs text-gray-400">
+      © 2024 Antigravity Logistics Systems. Authorized Personnel Only.
+    </p>
+</footer>
+<!-- END: MainFooter -->
+</body></html>

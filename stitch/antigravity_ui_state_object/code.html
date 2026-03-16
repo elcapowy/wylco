@@ -1,0 +1,40 @@
+{
+  "ui_state_orchestrator": {
+    "system": "Antigravity Logistics",
+    "version": "2.0.0",
+    "context": "Miami Operations",
+    "rules": [
+      {
+        "id": "MIAMI_CUSTOMS_LOCK",
+        "trigger": "status == 'CUSTOMS_MIAMI'",
+        "effect": {
+          "component": "InventoryGrid",
+          "action": "LOCK_SALES",
+          "ui_message": "Stock in Customs Clearance - Sales Restricted",
+          "allow_pre_order": false
+        }
+      },
+      {
+        "id": "REAL_TIME_TAX_ENGINE",
+        "scope": "SalesView",
+        "logic": {
+          "base_rate": 0.06,
+          "surtax_miami_dade": 0.01,
+          "total_applied": 0.07,
+          "display": "Split breakdown (6% FL + 1% Miami-Dade)"
+        }
+      },
+      {
+        "id": "SMART_DISPATCH_FILTERS",
+        "trigger": "delivery_zone_selection",
+        "logic": {
+          "zones": {
+            "Miami-Dade": "FILTER_BY_SOUTH_WAREHOUSE",
+            "Broward": "FILTER_BY_NORTH_WAREHOUSE"
+          },
+          "optimization": "Truck Load Balancing Enabled"
+        }
+      }
+    ]
+  }
+}

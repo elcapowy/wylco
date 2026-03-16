@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Antigravity - Manual Override</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 md:px-10 py-3 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Antigravity</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-start py-10 px-4">
+<div class="w-full max-w-[640px] bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<!-- Form Header -->
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">warning</span>
+<span class="text-primary font-bold text-sm tracking-widest uppercase">Resolution Required</span>
+</div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Manual Override</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Resolving <span class="font-mono font-semibold text-primary">DIVERSION_WARNING</span> for logistics asset.</p>
+</div>
+<!-- Form Body -->
+<form class="p-6 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Read Only Field: Container ID -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Container ID</label>
+<div class="flex items-center h-12 px-4 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-mono">
+                                    CONT-99283-X
+                                </div>
+</div>
+<!-- Read Only Field: Current Port -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Current Detected Port</label>
+<div class="flex items-center h-12 px-4 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                                    Port of Rotterdam (NLD)
+                                </div>
+</div>
+</div>
+<!-- Dropdown Field: New Port -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="new-port">New Authorized Port</label>
+<div class="relative">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary appearance-none text-slate-900 dark:text-slate-100" id="new-port">
+<option disabled="" selected="" value="">Select destination port...</option>
+<option value="antwerp">Port of Antwerp (BEL)</option>
+<option value="hamburg">Port of Hamburg (DEU)</option>
+<option value="felixstowe">Port of Felixstowe (GBR)</option>
+<option value="valencia">Port of Valencia (ESP)</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Text Area Field: Reason -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="reason">Reason for Override</label>
+<textarea class="w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary text-slate-900 dark:text-slate-100 resize-none" id="reason" placeholder="Provide detailed justification for the routing diversion..." rows="4"></textarea>
+</div>
+<!-- System Warning Note -->
+<div class="p-4 rounded-lg bg-primary/5 border border-primary/20 flex gap-3">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+<strong>Security Note:</strong> Manual overrides are logged and audited. Performing this action will clear the current diversion flag and update the manifest tracking system immediately.
+                            </p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+<button class="flex-1 h-12 flex items-center justify-center font-bold text-white bg-primary hover:bg-primary/90 rounded-xl transition-all shadow-lg shadow-primary/20" type="button">
+                                Apply Override
+                            </button>
+<button class="flex-1 h-12 flex items-center justify-center font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-all border border-slate-200 dark:border-slate-700" type="button">
+                                Cancel
+                            </button>
+</div>
+</form>
+</div>
+<!-- Context Map (Decorative) -->
+<div class="w-full max-w-[640px] mt-6 rounded-xl overflow-hidden h-32 border border-slate-200 dark:border-slate-800 relative group">
+<img alt="Logistics Map Context" class="w-full h-full object-cover opacity-40 dark:opacity-20 grayscale" data-alt="Abstract world map background for logistics tracking" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDySlITxDZ1sBdLylvn7AFr5c6qI6bRndAc4ZGcXQ1lsNiw2v9aQ6w6zanFO_p9NLprLCqz1VOBffUNT6R9OfOTKpTJ_O4aL-9aNI7W4cAZQBmtNzSShJdoQrHhlTSD1GpBgPgaQmFAEjvk5NjGPyXcTlF0ezNhdWXZ16FT7GaHfKWtznp7pzPF4iCooSzziaxQsa84eoL8HFAPmahFblrmbn18B8cQR8LCX6hr0hstgrp3iXV-noGKAFoBNQfLgPwzPpq1tEX9eqs"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-semibold tracking-wider text-slate-600 dark:text-slate-300 uppercase">Live Telemetry Active</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="py-6 px-10 text-center text-slate-400 text-xs">
+                © 2024 Antigravity Logistics Systems. Authorized Personnel Only.
+            </footer>
+</div>
+</div>
+</body></html>

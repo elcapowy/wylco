@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antigravity Data Orchestrator - Diversion Exceptions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 lg:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Antigravity</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Shipments</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Diversions</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">System Health</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+<div class="text-slate-400 flex items-center justify-center pl-3" data-icon="search">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-400" placeholder="Search containers..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+</div>
+<div class="bg-primary/20 border-2 border-primary/40 rounded-full size-10 overflow-hidden" data-alt="User avatar placeholder">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFtOmdskE4DnQJg7iqPa6twZOQEKDpee8TrqtzOrUUf984qc7GN3QN1IaJQ_xxq6U0PrIRznj2nL48pICGSx7kdIX53pRNCogrE1N_zI_iRkrH4ZQHYRdDXX7TkzILTQILZLFIIkatyA_hieecr3llLGMjbxvz0-hYV-Kg1IYOnq0hO42KiRs69Ra548L155LTcgHm2tjciaQqm-AtL3911WtLhNGKxrQpxRrx4MlS4822YsAjsljamO8VnCATsAWBh07dsOCILlA"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar (Quick Actions & System Health) -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark hidden xl:flex flex-col p-6 gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold uppercase tracking-wider">Quick Actions</h1>
+<p class="text-slate-500 text-xs mt-1">Operational Control</p>
+</div>
+<div class="flex flex-col gap-1">
+<button class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 group transition-all">
+<span class="material-symbols-outlined text-xl group-hover:text-primary">dashboard</span>
+<p class="text-sm font-medium">Overview</p>
+</button>
+<button class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary group transition-all">
+<span class="material-symbols-outlined text-xl">warning</span>
+<p class="text-sm font-bold">Diversion Desk</p>
+</button>
+<button class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 group transition-all">
+<span class="material-symbols-outlined text-xl group-hover:text-primary">query_stats</span>
+<p class="text-sm font-medium">Route Analytics</p>
+</button>
+<button class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 group transition-all">
+<span class="material-symbols-outlined text-xl group-hover:text-primary">history</span>
+<p class="text-sm font-medium">Audit Logs</p>
+</button>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-slate-200 dark:border-slate-800">
+<div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+<span class="text-xs font-bold uppercase text-slate-400">System Health</span>
+</div>
+<div class="space-y-3">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs font-medium">
+<span>Sat Link Alpha</span>
+<span class="text-green-500">99.9%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[99%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs font-medium">
+<span>Orchestrator V3</span>
+<span class="text-primary">Active</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[100%]"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full flex items-center justify-center gap-2 rounded-xl h-11 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg">emergency_home</span>
+<span>Emergency Reroute</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Header & Filters -->
+<div class="p-6 lg:p-10 pb-4">
+<div class="flex flex-wrap items-end justify-between gap-6 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Diversion Exceptions</h1>
+<div class="flex items-center gap-2">
+<span class="flex h-3 w-3 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+</span>
+<p class="text-slate-500 dark:text-slate-400 text-base font-medium">12 active alerts requiring immediate review</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 rounded-xl h-10 px-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold transition-all hover:border-primary">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Export Report</span>
+</button>
+<button class="flex items-center gap-2 rounded-xl h-10 px-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-bold transition-all hover:bg-primary dark:hover:bg-primary dark:hover:text-white">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>New Override</span>
+</button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap gap-3 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-400">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+<span class="text-xs font-bold uppercase tracking-wider">Filters</span>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block"></div>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 px-4 transition-all">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-medium">Original Destination</p>
+<span class="material-symbols-outlined text-lg text-slate-400">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 px-4 transition-all">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-medium">Current Location</p>
+<span class="material-symbols-outlined text-lg text-slate-400">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 px-4 transition-all">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-medium">Priority: <span class="text-primary font-bold">High</span></p>
+<span class="material-symbols-outlined text-lg text-slate-400">expand_more</span>
+</button>
+<button class="ml-auto text-primary text-xs font-bold hover:underline">Clear all filters</button>
+</div>
+</div>
+<!-- Exceptions Table -->
+<div class="px-6 lg:px-10 py-4 @container">
+<div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Container ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Detected Port</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Expected Port</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Exception Flag</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5 font-mono text-sm font-bold text-slate-900 dark:text-white">MSKU 9283741</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-sm font-medium">Port of Tampa</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">anchor</span>
+<span class="text-sm font-medium">PortMiami</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center rounded-lg bg-primary/10 px-2.5 py-1 text-xs font-black text-primary border border-primary/20">
+                                                DIVERSION_WARNING
+                                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined text-sm">pending_actions</span>
+<span class="text-xs font-bold">Manual Review Required</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-all">Approve New</button>
+<button class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-slate-500" title="View Logs">
+<span class="material-symbols-outlined text-sm">description</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5 font-mono text-sm font-bold text-slate-900 dark:text-white">SUDU 4421890</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-sm font-medium">Jacksonville</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">anchor</span>
+<span class="text-sm font-medium">Port Everglades</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center rounded-lg bg-primary/10 px-2.5 py-1 text-xs font-black text-primary border border-primary/20">
+                                                DIVERSION_WARNING
+                                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined text-sm">pending_actions</span>
+<span class="text-xs font-bold">Manual Review Required</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-primary text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all">Request Reroute</button>
+<button class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-slate-500" title="View Logs">
+<span class="material-symbols-outlined text-sm">description</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5 font-mono text-sm font-bold text-slate-900 dark:text-white">MAEU 7762534</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-sm font-medium">Port of Tampa</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">anchor</span>
+<span class="text-sm font-medium">PortMiami</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center rounded-lg bg-primary/10 px-2.5 py-1 text-xs font-black text-primary border border-primary/20">
+                                                DIVERSION_WARNING
+                                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span class="text-xs font-bold uppercase tracking-tight">Under Observation</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-all">Approve New</button>
+<button class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-primary transition-all font-bold text-xs" title="View Logs">
+                                                    LOGS
+                                                </button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5 font-mono text-sm font-bold text-slate-900 dark:text-white">TGBU 1129845</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-sm font-medium">Jacksonville</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">anchor</span>
+<span class="text-sm font-medium">Port Everglades</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center rounded-lg bg-primary/10 px-2.5 py-1 text-xs font-black text-primary border border-primary/20">
+                                                DIVERSION_WARNING
+                                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined text-sm">pending_actions</span>
+<span class="text-xs font-bold">Manual Review Required</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-all">Approve New</button>
+<button class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-slate-500" title="View Logs">
+<span class="material-symbols-outlined text-sm">description</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<p class="text-xs font-medium text-slate-500">Showing 4 of 12 active diversions</p>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Status Bar -->
+<div class="mt-auto px-6 py-4 flex items-center justify-between bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Global Sync</span>
+<span class="text-xs font-bold text-green-500">CONNECTED</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Processing Node</span>
+<span class="text-xs font-bold">US-EAST-01</span>
+</div>
+</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                        v2.4.12-PROD
+                    </div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

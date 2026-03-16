@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Discount Calculator | Antigravity Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "holiday": "#166534",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 py-3 lg:px-10 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight">Antigravity Logistics</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Sales</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Logistics</a>
+<a class="text-sm font-medium text-primary underline underline-offset-4" href="#">Calculators</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="h-10 w-64 rounded-xl border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 pl-10 pr-4 text-sm focus:border-primary focus:ring-primary" placeholder="Search orders..." type="text"/>
+</div>
+<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border-2 border-primary/20">
+<img alt="User Profile" data-alt="Corporate headshot of a logistics manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHBsrcbi7Tcsj2BJGodyABsK3__wepP55eQx8_f1BCr44YrSDWb5lR2KLJD1fxBfTBY-dd1pmZCgx7ENs6SjxzSBnAPYc6_LGWzyFOfI4NPL-jgY2YL0_KHDoUhC8--qGg9WB0uKKuwFni6sryS6rV64hEmEjnhTt26f0a29kotWHzBRnem5eQMeGuvbZB825PgjG7DmbrjOsVtSwuQAurevz5ZCky5_vf7ol8emmJkQWpj-nqEE9PeYn0wqzgpr_x0F4gNGbEozg"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Sidebar -->
+<aside class="hidden lg:flex w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-6 gap-6">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium font-bold">Sales &amp; Pricing</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="text-sm font-medium">Shipments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+<div class="mt-auto p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Help Center</p>
+<p class="text-xs text-slate-600 dark:text-slate-400 mb-3">Facing issues with regional tax calculations?</p>
+<button class="w-full py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-semibold rounded-lg hover:shadow-sm transition-all">Contact Support</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-6 lg:p-10 bg-background-light dark:bg-background-dark">
+<div class="max-w-6xl mx-auto">
+<div class="mb-8">
+<h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Bulk Discount Calculator</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2">Manage volume-based pricing and calculate dynamic profit margins including FL &amp; Miami-Dade taxes.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Calculator Inputs & Controls -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Input Card -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                                    Order Configuration
+                                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Quantity / Number of Packs</label>
+<div class="relative">
+<input class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-lg font-semibold px-4 focus:ring-primary focus:border-primary" placeholder="Enter quantity" type="number" value="250"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold uppercase tracking-widest">Packs</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Base Product Selection</label>
+<select class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary">
+<option>Standard Cargo Unit (Base $450.00)</option>
+<option>Heavy-Duty Module (Base $820.00)</option>
+<option>Express Pallet (Base $195.00)</option>
+</select>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-lg bg-holiday/5 border border-holiday/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-holiday text-xl">celebration</span>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        You are currently viewing the <span class="font-bold text-holiday">Holiday Promotional Tier</span>! Taxes are calculated for <strong>Florida State (6%)</strong> plus <strong>Miami-Dade County (1%)</strong>.
+                                    </p>
+</div>
+</section>
+<!-- Pricing Matrix Reference -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">grid_view</span>
+                                    Bulk Pricing Matrix
+                                </h2>
+<div class="overflow-hidden rounded-lg border border-slate-100 dark:border-slate-800">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-4 py-3 font-semibold">Tier</th>
+<th class="px-4 py-3 font-semibold">Volume Range</th>
+<th class="px-4 py-3 font-semibold">Discount</th>
+<th class="px-4 py-3 font-semibold">Est. Unit Price</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-4 py-3 text-slate-500">Tier 1</td>
+<td class="px-4 py-3 font-medium">1 - 9 packs</td>
+<td class="px-4 py-3">0%</td>
+<td class="px-4 py-3">$450.00</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-slate-500">Tier 2</td>
+<td class="px-4 py-3 font-medium">10 - 49 packs</td>
+<td class="px-4 py-3">5% Off</td>
+<td class="px-4 py-3">$427.50</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-slate-500">Tier 3</td>
+<td class="px-4 py-3 font-medium">50 - 99 packs</td>
+<td class="px-4 py-3">10% Off</td>
+<td class="px-4 py-3">$405.00</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-slate-500">Tier 4</td>
+<td class="px-4 py-3 font-medium">100 - 199 packs</td>
+<td class="px-4 py-3">15% Off</td>
+<td class="px-4 py-3">$382.50</td>
+</tr>
+<tr class="border-l-4 border-l-holiday bg-holiday/5">
+<td class="px-4 py-3 text-holiday font-bold flex items-center gap-2">
+                                                    Holiday Tier
+                                                    <span class="px-1.5 py-0.5 bg-holiday text-white text-[10px] rounded uppercase">Limited</span>
+</td>
+<td class="px-4 py-3 font-bold text-holiday">200+ packs</td>
+<td class="px-4 py-3 font-bold text-holiday">25% Off</td>
+<td class="px-4 py-3 font-bold text-holiday">$337.50</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Summary & Calculation Sidebar -->
+<div class="flex flex-col gap-6">
+<section class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl relative overflow-hidden">
+<!-- Background Pattern Decor -->
+<div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-holiday/20 blur-3xl"></div>
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-primary">Order Calculation</h3>
+<span class="flex items-center gap-1 text-[10px] font-bold bg-holiday/30 text-holiday-200 border border-holiday/50 px-2 py-0.5 rounded-full text-green-300">
+<span class="material-symbols-outlined text-[12px]">ac_unit</span> HOLIDAY RATE
+                                    </span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm">Base Unit Price</span>
+<span class="font-medium">$450.00</span>
+</div>
+<div class="flex justify-between items-center text-green-400 font-bold">
+<span class="text-sm">Holiday Discount (25%)</span>
+<span>-$112.50</span>
+</div>
+<div class="h-px bg-slate-700 my-2"></div>
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm">Final Unit Price</span>
+<span class="text-xl font-bold">$337.50</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-slate-400 text-sm">Order Subtotal (250)</span>
+<span class="font-medium">$84,375.00</span>
+</div>
+<div class="flex justify-between items-center text-slate-400">
+<span class="text-xs">Sales Tax (7.0% FL/M-D)</span>
+<span class="text-xs">+$5,906.25</span>
+</div>
+<div class="h-px bg-slate-700 my-2"></div>
+<div class="flex justify-between items-end">
+<span class="text-slate-300 text-sm font-medium">Total Order Value</span>
+<span class="text-3xl font-black text-primary">$90,281.25</span>
+</div>
+</div>
+<button class="w-full mt-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                    Apply Discount &amp; Generate Quote
+                                </button>
+</section>
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h2 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">insights</span>
+                                    Profit Analysis
+                                </h2>
+<div class="flex items-center justify-center py-4">
+<!-- Simulated Chart / Visualizer -->
+<div class="relative h-32 w-32">
+<svg class="h-full w-full" viewbox="0 0 36 36">
+<path class="text-slate-200 dark:text-slate-800 stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-holiday stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="82, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-black text-holiday">32%</span>
+<span class="text-[10px] uppercase font-bold text-slate-500">Net Margin</span>
+</div>
+</div>
+</div>
+<div class="space-y-3 mt-4">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-holiday"></div>
+<span class="text-slate-600 dark:text-slate-400">Projected Profit</span>
+</div>
+<span class="font-bold">$27,000.00</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<span class="text-slate-600 dark:text-slate-400">Total Cost of Goods</span>
+</div>
+<span class="font-bold">$57,375.00</span>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-holiday/10 text-holiday rounded-lg">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-white">+8.5% from Average</p>
+<p class="text-[10px] text-slate-500">Peak efficiency: Holiday Bulk Tier.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Logistics Context / Extra Info -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 flex items-center gap-5">
+<div class="h-14 w-14 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Warehouse" data-alt="Stock organized in a modern logistics warehouse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8QBZ7S2S9fpGeXAprtnn8fqvCERPpAj8d-wOpLtA3CZWIZVJIlX_9eLeZS_YsjxTdgB5SJ4IfQA33cew5w8wiJdfty8J3dNmt9M0b-mtGcFKw8TdceJj7a-JFmOR1I3NRCLx8LcjiXDD04HOdco23vHw2CK7PQvRhat6w9vKQqlkbsE1eHzTdw3YRGwyP98q_6l4OS4HXjefJdSw0CF_0EGsfyF5NaKPu05nKYU2swuiC6r_L7e8bf2jcfewm2AGKq3lwUjR1HYY"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Inventory Check</h4>
+<p class="text-xs text-slate-500 mt-1">Current stock for Standard Units: <span class="text-green-600 font-bold">1,240 units available</span>. Miami Hub has sufficient capacity for this bulk order.</p>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 flex items-center gap-5">
+<div class="h-14 w-14 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Logistics route" data-alt="Global shipping routes map visual" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzzVhOA0kk8x1b3CJnOCNNe2KO9D4B6V9ZbcoA-Fs48a0uYas7r8y-yI9jlF_tVGNiNU-SM1Q1CojidcZZ05UDRdVfAM0-RbyhhmEM3zMMdPic7N4GbC4A03bbkCE6TH329jNKTVtj-p_vbmjU3FCqv7OlD3Q5PlzsBXXCtm0VRXv_kkCukufeJt1p2_PlgeSEiAcevGmOelaYPcourD_cgggmjAo8zwNzj1-VQ02sXEaYB-AWtzPZ_hP_sz1cUhXOlFoT9TbGDhU"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Shipping Estimates</h4>
+<p class="text-xs text-slate-500 mt-1">Bulk orders exceeding 40 packs qualify for <span class="text-primary font-bold">Priority Freight</span> at no additional handling cost.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation (Bottom) -->
+<div class="lg:hidden fixed bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex justify-around">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">calculate</span>
+<span class="text-[10px] font-bold">Calc</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Account</span>
+</button>
+</div>
+</div>
+</body></html>

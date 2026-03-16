@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: "Public Sans", sans-serif; }
+        .kanban-column { min-width: 300px; width: 300px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Bar -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 z-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Sales CRM</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<div class="text-slate-500 flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-500" placeholder="Search deals, clients..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-slate-900 dark:text-white">Alex Rivera</p>
+<p class="text-[10px] text-slate-500">Sales Manager</p>
+</div>
+<div class="bg-primary/20 rounded-full size-10 flex items-center justify-center overflow-hidden border-2 border-primary">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="User profile avatar of Alex Rivera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_ufoD4VJEjn-G26VDrr-m0C2CcF3ifhTkdRXGsGGBD2GwagPiWcDuvO5huJL389LzCPxDFB2-dPbLkunFevNNTN9Q-NRFlCJdRA0JpqZ9e8DTcAEV8SEwj_0Woi0e4EVmY6Vx4hIcwVUYAvZuc47IrMCsfILzs8vko6NaHtfStSeopwAM_SLMTttW__rDVtOqJ30srpOYF79FeAzhSVIiFLx5aac_3qfKWTbsJE-wRMPXCAJENNBXN91FuHirS8NClAX_gG3Hygk"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between py-6">
+<div class="flex flex-col gap-1 px-4">
+<div class="mb-4 px-2">
+<div class="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+<div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">warehouse</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-white leading-none">Antigravity</p>
+<p class="text-[10px] text-slate-500">Logistics Hub</p>
+</div>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-white font-semibold" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="text-sm">Deals</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" href="#">
+<span class="material-symbols-outlined text-slate-400">group</span>
+<span class="text-sm">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" href="#">
+<span class="material-symbols-outlined text-slate-400">inventory_2</span>
+<span class="text-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" href="#">
+<span class="material-symbols-outlined text-slate-400">monitoring</span>
+<span class="text-sm">Reports</span>
+</a>
+</nav>
+</div>
+<div class="px-4">
+<div class="bg-primary/5 rounded-xl p-4 border border-primary/20">
+<p class="text-xs font-bold text-primary mb-1">Q3 Target</p>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden mb-2">
+<div class="bg-primary h-full w-[72%]"></div>
+</div>
+<p class="text-[10px] text-slate-500">72% of $500k goal reached</p>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col bg-background-light dark:bg-background-dark overflow-hidden">
+<!-- Content Header -->
+<div class="p-6 pb-0">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Deals Pipeline</h1>
+<p class="text-slate-500 text-sm mt-1">Manage and track your logistics sales stages across the globe.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">add</span>
+                        New Deal
+                    </button>
+</div>
+<!-- Kanban Tabs (Visual indicators of columns) -->
+<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+<div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border-b-2 border-primary shadow-sm kanban-column flex-shrink-0">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-sm font-bold">Lead</span>
+<span class="ml-auto bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full text-slate-500">12</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border-b-2 border-transparent kanban-column flex-shrink-0">
+<span class="size-2 rounded-full bg-slate-300"></span>
+<span class="text-sm font-bold text-slate-500">Quotation</span>
+<span class="ml-auto bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full text-slate-500">8</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border-b-2 border-transparent kanban-column flex-shrink-0">
+<span class="size-2 rounded-full bg-slate-300"></span>
+<span class="text-sm font-bold text-slate-500">Negotiation</span>
+<span class="ml-auto bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full text-slate-500">5</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border-b-2 border-transparent kanban-column flex-shrink-0">
+<span class="size-2 rounded-full bg-slate-300"></span>
+<span class="text-sm font-bold text-slate-500">Closing</span>
+<span class="ml-auto bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full text-slate-500">3</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border-b-2 border-transparent kanban-column flex-shrink-0">
+<span class="size-2 rounded-full bg-slate-300"></span>
+<span class="text-sm font-bold text-slate-500">Dispatched</span>
+<span class="ml-auto bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full text-slate-500">42</span>
+</div>
+</div>
+</div>
+<!-- Kanban Board Area -->
+<div class="flex-1 overflow-x-auto p-6 pt-0">
+<div class="flex gap-4 h-full items-start">
+<!-- Column: Lead -->
+<div class="kanban-column flex flex-col gap-4 h-full pb-10">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">#AG-8821</span>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">more_horiz</span></button>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Global Tech Solutions</h3>
+<p class="text-xl font-black text-slate-900 dark:text-white mb-3">$45,000</p>
+<div class="flex flex-col gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">Landed Cost</span>
+<span class="font-bold text-primary">$38,000</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/60 h-full w-[84%]"></div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200">
+<img class="w-full h-full rounded-full" data-alt="Team member profile photo 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1S5FbeC03c-eAlva8SIQwQl4PGRrDAy4zlY6bWk4lsEbFwocTPk_3fx_-0uZxe4EmOv29PrnT4uKURp1dEXQl0YxP4WHwUJI8dnehhi4XTIRWUW9yGXrPw1xlJzmYIvhv_gSK4BgSQ6Ntwxcu_zNSujgpqe9HG-SmW3Ff5lt7kqMQ-6qykeM7hH0aZoYrIB5Xn7LYZvclr1t0VwBEG1_2QBTaDvh-mDXiKV9buX3TqPCNHOI7AkqTUVm8eKmzq6UdzYa9IVmAgWk"/>
+</div>
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 flex items-center justify-center text-[8px] font-bold">
+                                        +2
+                                    </div>
+</div>
+<span class="text-[10px] font-medium text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">calendar_today</span> 2d ago
+                                </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">#AG-8845</span>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">more_horiz</span></button>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Nordic Freight Co.</h3>
+<p class="text-xl font-black text-slate-900 dark:text-white mb-3">$12,800</p>
+<div class="flex flex-col gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">Landed Cost</span>
+<span class="font-bold text-primary">$9,200</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/60 h-full w-[71%]"></div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200">
+<img class="w-full h-full rounded-full" data-alt="Team member profile photo 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGg2s67w9j43Q6EL-BXUQ40BN-LVctr-qrpJFNnVl_7SZBp64CvASwOX18i_wdqXkGSyBwXvQjhuNiW2tJOUSu4lQrreo2OPE7T5TKo0meOFQF00zSZA4CHiTdFkNKG7SESePwqgWOgq_muLU8gy5M94aECWL0Kz9sSBqyIw45jKNCOvoGiegInqY2Zz6Uba7H8NZPdJbr6QwaWreg7_A00Nyaj_dV-RyprhyaIvvhs31yq9z0-Un7W3Kjnq3Vn8ypkg4VfFUcbvo"/>
+</div>
+<span class="text-[10px] font-medium text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">calendar_today</span> 5h ago
+                                </span>
+</div>
+</div>
+</div>
+<!-- Column: Quotation -->
+<div class="kanban-column flex flex-col gap-4 h-full pb-10">
+<!-- Card 3 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">#AG-8799</span>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">more_horiz</span></button>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Apex Manufacturing</h3>
+<p class="text-xl font-black text-slate-900 dark:text-white mb-3">$89,000</p>
+<div class="flex flex-col gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">Landed Cost</span>
+<span class="font-bold text-primary">$72,500</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/60 h-full w-[81%]"></div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200">
+<img class="w-full h-full rounded-full" data-alt="Team member profile photo 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRbGkuxubyhvc-uj_MNAc43uwKj8gMKrW4xYlfUbNoT8F28sAgBJjafTN6VnClCXsK1mTxksdi_jvE8geiS8KlCZ97YAcKLcEcSZ_uZ9WBR5T6HSvgFjw2-N1vwNtsMcWuQn44fQNNQyCr8VXMAUmhY6pgX_fbkyxUz3QWjzd7USMUZ6DZN4dzmaWv1aGCWBaWh0yFZg51kc2AgZb-nrvMGL6dAxc5LpPFZgknLtAESVTPSHyHYwWox8IyA4PoYRk6hdTGBCmNyqQ"/>
+</div>
+<span class="text-[10px] font-medium text-primary flex items-center gap-1 bg-primary/10 px-2 py-0.5 rounded-full">
+                                    Priority
+                                </span>
+</div>
+</div>
+</div>
+<!-- Column: Negotiation -->
+<div class="kanban-column flex flex-col gap-4 h-full pb-10">
+<div class="bg-white/40 dark:bg-slate-900/40 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-8 flex flex-col items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-4xl mb-2">drag_indicator</span>
+<p class="text-xs font-medium">Drag deals here</p>
+</div>
+</div>
+<!-- Column: Closing -->
+<div class="kanban-column flex flex-col gap-4 h-full pb-10">
+<!-- Card 4 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">#AG-8621</span>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">more_horiz</span></button>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Zenith Retailers</h3>
+<p class="text-xl font-black text-slate-900 dark:text-white mb-3">$120,400</p>
+<div class="flex flex-col gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">Landed Cost</span>
+<span class="font-bold text-primary">$98,000</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/60 h-full w-[81%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Dispatched -->
+<div class="kanban-column flex flex-col gap-4 h-full pb-10">
+<div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl shadow-sm border border-green-200 dark:border-green-900/30">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-green-600 dark:text-green-400">Delivered</span>
+<span class="material-symbols-outlined text-green-500 text-sm">verified</span>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight mb-1">Stellar Importers</h3>
+<p class="text-xl font-black text-slate-900 dark:text-white mb-3">$22,500</p>
+<div class="flex items-center gap-2 text-[10px] text-green-600 dark:text-green-400 font-bold">
+<span class="material-symbols-outlined text-xs">local_shipping</span> 
+                                TRACKING: #7729110
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antigravity Logistics - Delete Pricing Rules</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for Theme Customization -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#F15A24',
+              gray: '#64748B',
+              dark: '#1E293B'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-animations">
+    .modal-overlay {
+      backdrop-filter: blur(4px);
+    }
+    .custom-shadow {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-brand-dark">
+<!-- BEGIN: Background Screen (Dimmed/Blurred) -->
+<div aria-hidden="true" class="fixed inset-0 overflow-hidden pointer-events-none filter blur-[2px] opacity-60">
+<!-- BEGIN: MainHeader -->
+<header class="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 bg-brand-orange rounded-lg flex items-center justify-center">
+<svg class="text-white w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"></path></svg>
+</div>
+<span class="text-xl font-bold">Antigravity Logistics</span>
+</div>
+<nav class="flex items-center space-x-8 text-sm font-medium text-gray-500">
+<a href="#">Dashboard</a>
+<a href="#">Inventory</a>
+<a class="text-brand-orange border-b-2 border-brand-orange pb-4 mt-4" href="#">Pricing Rules</a>
+<a href="#">Settings</a>
+<div class="flex items-center space-x-4 pl-4 border-l">
+<button class="p-2 rounded-full bg-gray-100 text-gray-400">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center border border-gray-300">
+<svg class="w-5 h-5 text-gray-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" fill-rule="evenodd"></path></svg>
+</div>
+</div>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent (Modal Content Placeholder) -->
+<main class="max-w-5xl mx-auto mt-8 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="p-8 border-b border-gray-100 flex justify-between items-start">
+<div>
+<h1 class="text-2xl font-bold">Bulk Edit Pricing Rules</h1>
+<p class="text-brand-orange text-sm font-medium mt-1">Modifying configurations for 12 selected SKUs/ASINs</p>
+</div>
+</div>
+<div class="p-8">
+<div class="grid grid-cols-3 gap-4 mb-8">
+<div class="p-6 border-2 border-brand-orange rounded-xl bg-orange-50/30">
+<div class="text-brand-orange mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div>
+<h3 class="font-bold">Match Buy Box</h3>
+</div>
+<div class="p-6 border border-gray-100 rounded-xl"></div>
+<div class="p-6 border border-gray-100 rounded-xl"></div>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+</div>
+<!-- END: Background Screen -->
+<!-- BEGIN: Delete Confirmation Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 modal-overlay" id="delete-modal-overlay">
+<!-- BEGIN: Modal Container -->
+<div aria-labelledby="modal-title" aria-modal="true" class="bg-white w-full max-w-md rounded-2xl p-8 custom-shadow border border-gray-100 relative" role="dialog">
+<!-- Close Button (Top Right) -->
+<button class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 transition-colors" data-purpose="close-modal-icon">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Modal Icon -->
+<div class="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center mb-6 mx-auto" data-purpose="modal-warning-icon">
+<svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Modal Header -->
+<div class="text-center mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-3" id="modal-title">Delete Pricing Rules?</h2>
+<p class="text-gray-500 text-sm leading-relaxed px-2">
+          This action will permanently remove the active pricing configurations for the 
+          <span class="font-bold text-brand-dark">12 selected items</span>. These items will default back to manual pricing on Amazon Seller Central.
+        </p>
+</div>
+<!-- BEGIN: Modal Actions -->
+<div class="flex flex-col space-y-3" data-purpose="modal-footer-actions">
+<!-- Delete Button (Destructive) -->
+<button class="w-full py-3.5 px-4 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl shadow-lg shadow-red-500/20 transition-all active:scale-95 flex items-center justify-center space-x-2">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" fill-rule="evenodd"></path></svg>
+<span>Delete Rules</span>
+</button>
+<!-- Cancel Button -->
+<button class="w-full py-3.5 px-4 bg-white hover:bg-gray-50 text-gray-700 font-semibold rounded-xl border border-gray-200 transition-colors">
+          Cancel
+        </button>
+</div>
+<!-- END: Modal Actions -->
+</div>
+<!-- END: Modal Container -->
+</div>
+<!-- END: Delete Confirmation Modal Overlay -->
+<!-- Footer Disclaimer -->
+<div class="fixed bottom-6 left-0 right-0 text-center pointer-events-none">
+<div class="inline-flex items-center text-xs text-gray-400">
+<svg class="w-3 h-3 mr-1.5" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" fill-rule="evenodd"></path></svg>
+      Changes typically propagate to Amazon Seller Central within 5-15 minutes.
+    </div>
+</div>
+<script data-purpose="ui-interactions">
+    // Simple script to handle visual interaction for demo purposes
+    const modal = document.getElementById('delete-modal-overlay');
+    const closeElements = modal.querySelectorAll('button:not(.bg-red-500)');
+
+    closeElements.forEach(el => {
+      el.addEventListener('click', () => {
+        // modal.classList.add('hidden'); // Logic to hide modal
+      });
+    });
+  </script>
+</body></html>

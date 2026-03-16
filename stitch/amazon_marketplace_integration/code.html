@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Amazon Marketplace Integration - Antigravity Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex flex-col fixed h-full z-20">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight">Antigravity</h2>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-sm font-semibold">Marketplace</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="User Profile" data-alt="Professional profile headshot of a logistics manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChUYtVMujbMzFbfefaHS6HgccZsBFsW0pyevZK63FSRkr9Pugt_SwC83g00D436Sj-ndIxzYJeGZehBh-dbpyjZiHDDhPeNr2O2vZnx_ZoEij4J5TvxeA0aycApOIHFn1tj0VnYCwJ_xSpv7Txh-mxVxUYsaqPIzxWIzhpKD2w0KJ6I9FIR_4OenMj3J6Vp_heJXokuedd_gSPabnVEYDN1j0A-e851npPnoPVsYtXZujSzGbnYFMwSrBTuBf76wqnZVQc8OCrn8s"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-500">Admin</span>
+<span class="text-sm font-medium">Alex Chen</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 p-8">
+<!-- Top Nav Bar -->
+<header class="flex items-center justify-between mb-8">
+<div>
+<h1 class="text-2xl font-black tracking-tight">Amazon Marketplace Integration</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Seller Central API: v2024.1.0 (Connected)</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Search ASIN or SKU..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">sync</span>
+                    Force Manual Sync
+                </button>
+</div>
+</header>
+<!-- Status & Performance Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Marketplace Sync Status -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-500 uppercase text-xs tracking-widest">Marketplace Sync Status</h3>
+<span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-3xl font-black">Active</p>
+<p class="text-sm text-green-600 dark:text-green-400 font-medium">All systems operational</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-slate-400 mb-1">Last Sync: 2m ago</p>
+<div class="flex gap-1">
+<span class="text-[10px] px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded-full font-bold">FBM</span>
+<span class="text-[10px] px-2 py-0.5 bg-primary/20 text-primary rounded-full font-bold">FBA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pricing Sync Control -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-500 uppercase text-xs tracking-widest">Pricing Strategy Sync</h3>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</div>
+</div>
+<div class="space-y-2">
+<p class="text-sm font-semibold">Volume-Based Sales Pricing</p>
+<p class="text-xs text-slate-400">Pushing dynamic pricing rules from Local ERP to Amazon Seller Central in real-time.</p>
+<div class="pt-2 flex items-center gap-2 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                        148 Price Points Updated Today
+                    </div>
+</div>
+</div>
+<!-- Performance Chart Stub -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-500 uppercase text-xs tracking-widest">Sales Performance</h3>
+<select class="text-[10px] font-bold bg-transparent border-none p-0 focus:ring-0">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+</select>
+</div>
+<div class="flex items-center gap-4 h-16">
+<div class="flex-1 space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>Amazon</span>
+<span>$42.5k</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 65%"></div>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>Local</span>
+<span>$21.8k</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400" style="width: 35%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Data Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Inventory Mapping Section -->
+<div class="xl:col-span-2 space-y-6">
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<h2 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">link</span>
+                            Inventory &amp; ASIN Mapping
+                        </h2>
+<button class="text-sm font-bold text-primary hover:underline">Export Full Map</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-900/50 text-slate-500 text-[10px] font-bold uppercase tracking-wider">
+<tr>
+<th class="px-6 py-3">Internal SKU</th>
+<th class="px-6 py-3">Amazon ASIN</th>
+<th class="px-6 py-3 text-right">Local Stock</th>
+<th class="px-6 py-3 text-right">FBA Stock</th>
+<th class="px-6 py-3 text-center">Sync Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr>
+<td class="px-6 py-4">
+<div class="text-sm font-bold">AG-DRONE-X1</div>
+<div class="text-[10px] text-slate-400">Quadcopter Pro - MK I</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-slate-600 dark:text-slate-300">B07XJ8C8RR</span>
+<span class="material-symbols-outlined text-xs text-slate-400">open_in_new</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-mono text-sm">450</td>
+<td class="px-6 py-4 text-right font-mono text-sm">1,204</td>
+<td class="px-6 py-4 text-center">
+<span class="text-green-500 material-symbols-outlined text-sm">check_circle</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="text-sm font-bold">AG-BATT-4S</div>
+<div class="text-[10px] text-slate-400">5000mAh Lipo Pack</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-slate-600 dark:text-slate-300">B08K3L92PP</span>
+<span class="material-symbols-outlined text-xs text-slate-400">open_in_new</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-mono text-sm">89</td>
+<td class="px-6 py-4 text-right font-mono text-sm">412</td>
+<td class="px-6 py-4 text-center">
+<span class="text-amber-500 material-symbols-outlined text-sm">pending</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="text-sm font-bold">AG-PROP-1045</div>
+<div class="text-[10px] text-slate-400">10x4.5 CW/CCW Pairs</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-slate-600 dark:text-slate-300">B01M9B489X</span>
+<span class="material-symbols-outlined text-xs text-slate-400">open_in_new</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-mono text-sm">2,300</td>
+<td class="px-6 py-4 text-right font-mono text-sm">8,450</td>
+<td class="px-6 py-4 text-center">
+<span class="text-green-500 material-symbols-outlined text-sm">check_circle</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- FBA Inbound Shipments (ISO 6346 Container Tracking) -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-700">
+<h2 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">box</span>
+                            FBA Inbound Tracking
+                        </h2>
+</div>
+<div class="p-6 space-y-4">
+<!-- Shipment Item 1 -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/30 border border-slate-100 dark:border-slate-800">
+<div class="size-12 bg-white dark:bg-slate-800 rounded flex items-center justify-center border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-primary">directions_boat</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="text-sm font-black font-mono">MSCU 423851 6</span>
+<span class="text-[10px] px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 rounded font-bold">IN TRANSIT</span>
+</div>
+<div class="text-xs text-slate-500 mt-1">Destination: FBA Warehouse ONT8 (California, US)</div>
+<div class="mt-3 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+<span>Port of departure: Ningbo</span>
+<span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+<span>Port of entry: LAX</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-400">ETA</p>
+<p class="text-sm font-black">Oct 24</p>
+</div>
+</div>
+<!-- Shipment Item 2 -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/30 border border-slate-100 dark:border-slate-800 opacity-80">
+<div class="size-12 bg-white dark:bg-slate-800 rounded flex items-center justify-center border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-slate-400">local_shipping</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="text-sm font-black font-mono">HLXU 918234 2</span>
+<span class="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300 rounded font-bold">DELIVERED</span>
+</div>
+<div class="text-xs text-slate-500 mt-1">Destination: FBA Warehouse EWR4 (New Jersey, US)</div>
+<div class="mt-3 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+<span>Arrived: Oct 12, 2023</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-400">STATUS</p>
+<p class="text-sm font-black text-green-600">CHECKED</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Column -->
+<div class="space-y-6">
+<!-- Logistics Alerts -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="p-6 bg-amber-50 dark:bg-amber-900/20 border-b border-amber-100 dark:border-amber-900/30">
+<h2 class="text-sm font-black flex items-center gap-2 text-amber-700 dark:text-amber-500 uppercase tracking-wider">
+<span class="material-symbols-outlined text-lg">warning</span>
+                            Amazon Logistics Alerts
+                        </h2>
+</div>
+<div class="p-4 space-y-3">
+<div class="p-3 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 rounded-lg">
+<p class="text-xs font-bold text-red-700 dark:text-red-400">FBA Storage Limit Exceeded</p>
+<p class="text-[11px] text-red-600 dark:text-red-300 mt-1">Inventory at FTW1 is at 98.4% capacity. Avoid new inbound shipments to this FC.</p>
+</div>
+<div class="p-3 bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 rounded-lg">
+<p class="text-xs font-bold">Late Arrival Risk</p>
+<p class="text-[11px] text-slate-500 mt-1">Vessel 'Ocean Brave' (Container MSCU 423851 6) is delayed by 48h due to port congestion.</p>
+</div>
+<div class="p-3 bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 rounded-lg">
+<p class="text-xs font-bold">Stranded Inventory (4)</p>
+<p class="text-[11px] text-slate-500 mt-1">4 items in 'Reserved' status for &gt; 72h. Manual verification required.</p>
+</div>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-900/30 text-center">
+<button class="text-[11px] font-bold text-slate-500 hover:text-primary transition-colors">VIEW ALL ALERTS</button>
+</div>
+</div>
+<!-- Small Map Preview -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="h-40 bg-slate-100 dark:bg-slate-900 relative">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent z-10"></div>
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="Satellite map view of shipping routes between Asia and USA" data-location="Pacific Ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtCj1RaLpbgenEyAhO14WIHE0ly-9oiRmiPQ073REAZXp7Hkx1vIes04qYuSksMzBr26aiprbhxfaIylWty2IXOD1uPbJdJZdHQNGLR9RotUeUJ8NQIZFnjrEH-heE4GY89PGew54fty-XLTuzlfsAaMv5wSTW6Fb91_TLA358rQXR8lzbAiSW2kcX1tT70jVG0Wo64t8iMGVAN_2eW48TzpFueCxI8ZJoL9krQmXGBUhKKz8C-fBxqphlBS5TlQ8svDWH_D41oBA"/>
+<div class="absolute bottom-4 left-4 z-20 text-white">
+<p class="text-[10px] font-bold uppercase tracking-widest opacity-80">Global Logistics Map</p>
+<p class="text-sm font-bold">2 Ships En Route to FBA</p>
+</div>
+</div>
+</div>
+<!-- API Connectivity -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+<h3 class="font-bold text-slate-500 uppercase text-[10px] tracking-widest mb-4">API Health</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-500">Inventory Sync</span>
+<span class="text-[10px] font-black text-green-500">99.9%</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-500">Order Webhook</span>
+<span class="text-[10px] font-black text-green-500">STABLE</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-500">Pricing Engine</span>
+<span class="text-[10px] font-black text-primary">PUSHING</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
